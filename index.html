@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,10 +15,12 @@
                     <label tabindex="0" class="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h7" />
                         </svg>
                     </label>
-                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a>Homepage</a></li>
                         <li><a>Portfolio</a></li>
                         <li><a>About</a></li>
@@ -49,14 +52,25 @@
         </div>
 
         <!-- ! tab -->
-        <div id="parent-div" class="flex justify-center items-center mt-4 my-4"> 
+        <div id="parent-div" class="flex justify-center items-center mt-4 my-4">
             <!-- ! add dynamic categories -->
         </div>
         <div id="news-parent">
             <!-- ! add news cart -->
         </div>
-        
+
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="my_modal" class="modal">
+            <form method="dialog" class="modal-box">
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click outside to close</p>
+            </form>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
     </div>
     <script src="./js/app.js"></script>
 </body>
+
 </html>

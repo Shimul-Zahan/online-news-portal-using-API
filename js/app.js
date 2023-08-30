@@ -29,10 +29,11 @@ const showAllNewaAcategory = async (id) => {
     showCategoryNwes(showAllData.data);
 }
 
-const showCategoryNwes = (categoryNewsArray) => {
+const showCategoryNwes = (categoryNewsArray, isClicked) => {
     const newsDiv = document.getElementById('news-parent');
     newsDiv.innerHTML = '';
-    categoryNewsArray.forEach(item => {
+    categoryNewsArray.forEach(item=> {
+        console.log("clicked", isClicked);
         if (item.details.length > 300) {
             item.details = item.details.slice(0, 300);
         }
@@ -68,16 +69,20 @@ const showCategoryNwes = (categoryNewsArray) => {
                             <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
                         <div>
-                            <button class="btn btn-outline btn-secondary">Read More</button>
+                            <button onclick="readFullNews('${item._id}')" class="btn btn-outline btn-secondary">Read More</button>
                         </div>
                     </div>
                 </div>
             </div>
         `;
         newsDiv.appendChild(new_div);
-        console.log(item)
+        // console.log(item._id)
     })
 }
 
+// const readFullNews = async (id) => {
+//     await fetch(``)
+//     my_modal.showModal();
+// }
 
 fetchingData();
