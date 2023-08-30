@@ -33,21 +33,49 @@ const showCategoryNwes = (categoryNewsArray) => {
     const newsDiv = document.getElementById('news-parent');
     newsDiv.innerHTML = '';
     categoryNewsArray.forEach(item => {
+        if (item.details.length > 300) {
+            item.details = item.details.slice(0, 300);
+        }
         const new_div = document.createElement('div');
         new_div.classList = ` bg-base-200 my-8 rounded-xl`;
         new_div.innerHTML = `
-            <div class="hero-content flex-col lg:flex-row">
+            <div class="flex gap-4 p-4 flex-col lg:flex-row">
                 <img src="${item.image_url}" class="max-w-lg rounded-lg shadow-2xl" />
                 <div>
-                    <h1 class="text-5xl font-bold">Box Office News!</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary">Get Started</button>
+                    <h1 class="text-2xl font-bold">${item.title}</h1>
+                    <p class="py-4">${item.details}..</p>
+
+                    <div class="flex justify-between items-center mt-16">
+                        <div class="flex justify-center items-center gap-2">
+                            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                                <div class="w-10 rounded-full flex justify-center items-center">
+                                    <img src="${item.author.img}" />
+                                </div>
+                            </label>
+                            <div>
+                                <h1 class="text-base font-medium">${item.author.name}</h1>
+                                <p class="text-base font-medium">${item.author.published_date.slice(0, 10)}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h1><i class="fa-solid fa-eye"></i> ${item.total_view}</h1>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline btn-secondary">Read More</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
         newsDiv.appendChild(new_div);
-        // console.log(item.image_url)
+        console.log(item)
     })
 }
 
