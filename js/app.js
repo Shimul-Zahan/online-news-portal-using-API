@@ -22,18 +22,29 @@ const displayCategories = (categories) => {
 }
 
 const showAllNewaAcategory = async (id) => {
-    console.log(id)
+    // console.log(id)
     const fetchingId = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`);
     const showAllData = await fetchingId.json();
+    const idData = showAllData.data;
+    // console.log(idData)
+
+    const sortData = idData.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    })
+
+    // console.log(sortData)
+
+    // displayData(sortData);
     
-    showCategoryNwes(showAllData.data);
+    showCategoryNwes(sortData);
 }
 
-const showCategoryNwes = (categoryNewsArray, isClicked) => {
+const showCategoryNwes = (categoryNewsArray) => {
     const newsDiv = document.getElementById('news-parent');
     newsDiv.innerHTML = '';
     categoryNewsArray.forEach(item=> {
-        console.log("clicked", isClicked);
+        // console.log("clicked", isClicked);
+        // console.log(item.total_view.sort(item))
         if (item.details.length > 300) {
             item.details = item.details.slice(0, 300);
         }
@@ -59,7 +70,7 @@ const showCategoryNwes = (categoryNewsArray, isClicked) => {
                             </div>
                         </div>
                         <div>
-                            <h1><i class="fa-solid fa-eye"></i> ${item.total_view}</h1>
+                            <h1><i class="fa-solid fa-eye"></i> ${item.total_view? item.total_view : "No views"}</h1>
                         </div>
                         <div>
                             <i class="fa-solid fa-star"></i>
@@ -80,9 +91,10 @@ const showCategoryNwes = (categoryNewsArray, isClicked) => {
     })
 }
 
-// const readFullNews = async (id) => {
-//     await fetch(``)
-//     my_modal.showModal();
-// }
+// // const readFullNews = async (id) => {
+// //     await fetch(``)
+// //     my_modal.showModal();
+// // }
 
 fetchingData();
+showAllNewaAcategory('08')
